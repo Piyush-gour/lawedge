@@ -1,0 +1,209 @@
+/* ============================================
+   PYQ BANK PAGE STYLES (SPLIT-SCREEN READER)
+   ============================================ */
+
+.split-layout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 140px); /* Fill remaining viewport minus navbar/padding */
+  gap: var(--space-xl);
+  overflow: hidden;
+}
+
+/* --- Left Sidebar Menu --- */
+.pyq-sidebar {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.pyq-sidebar__header {
+  padding: var(--space-lg) var(--space-xl);
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+  color: white;
+}
+
+.pyq-sidebar__header h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.pyq-sidebar__header p {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.pyq-sidebar__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.pyq-sidebar__year-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pyq-sidebar__year-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #92400e;
+  background: #fef3c7;
+  padding: 4px 12px;
+  border-radius: 6px;
+  width: fit-content;
+  margin: 0 0 8px 0;
+}
+
+.pyq-sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pyq-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.pyq-sidebar__item:hover {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.pyq-sidebar__item.active {
+  background: #eff6ff;
+  border-color: #3b82f6;
+}
+
+.pyq-sidebar__item.active .pyq-title {
+  color: #1e3a8a;
+  font-weight: 700;
+}
+
+.pyq-icon {
+  font-size: 1.2rem;
+}
+
+.pyq-title {
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* --- Right PDF Viewer Pane --- */
+.pyq-viewer-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.pyq-viewer-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pyq-viewer-header {
+  padding: var(--space-md) var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pyq-viewer-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+}
+
+.pyq-download-btn {
+  background: #3b82f6;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.pyq-download-btn:hover {
+  background: #2563eb;
+}
+
+.pyq-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #e2e8f0; /* Soft background while PDF loads */
+}
+
+.pyq-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: var(--color-text-secondary);
+  padding: var(--space-2xl);
+}
+
+.pyq-empty-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+.pyq-empty-state h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  color: #334155;
+}
+
+.pyq-empty-state p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive constraints */
+@media (max-width: 1024px) {
+  .split-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+  
+  .pyq-sidebar {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  .pyq-viewer-pane {
+    height: 80vh; /* Fixed height on mobile when stacked */
+  }
+}
