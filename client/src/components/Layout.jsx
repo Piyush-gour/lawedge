@@ -277,31 +277,26 @@ export default function Layout() {
           className="copilot-fab" 
           onClick={() => setCopilotOpen(true)}
           title="Open AI Legal Tutor"
-          style={{
-            position: 'fixed',
-            bottom: '24px',
-            right: '24px',
-            width: '60px',
-            height: '60px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #4f46e5 0%, #6366f1 100%)',
-            color: 'white',
-            border: 'none',
-            boxShadow: '0 10px 25px rgba(79, 70, 229, 0.4)',
-            fontSize: '1.8rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            zIndex: 900,
-            transition: 'transform 0.2s, box-shadow 0.2s'
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.boxShadow = '0 15px 30px rgba(79, 70, 229, 0.6)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 10px 25px rgba(79, 70, 229, 0.4)'; }}
         >
           🤖
         </button>
       )}
+
+      {/* Bottom Navigation Bar (Mobile Only) */}
+      <nav className="bottom-nav">
+        {navItems.slice(0, 4).map((item) => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              `bottom-nav__item ${isActive ? 'bottom-nav__item--active' : ''}`
+            }
+          >
+            <span className="bottom-nav__icon">{item.icon}</span>
+            <span className="bottom-nav__label">{item.label}</span>
+          </NavLink>
+        ))}
+      </nav>
     </div>
   );
 }
