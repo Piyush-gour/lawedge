@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('./models/User');
 
-const email = 'ayushipethari2404@gmail.com';
+const email = 'grafiqly.in@gmail.com';
 
 async function promote() {
   try {

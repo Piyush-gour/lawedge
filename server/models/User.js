@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema(
       longest: { type: Number, default: 0 },
       lastStudyDate: { type: Date, default: null },
     },
+    lastActiveAt: {
+      type: Date,
+      default: null
+    },
     preferences: {
       darkMode: { type: Boolean, default: false },
       notifications: { type: Boolean, default: true },

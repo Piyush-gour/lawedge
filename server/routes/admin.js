@@ -77,3 +77,30 @@ router.delete('/users/:id', authMiddleware, adminMiddleware, async (req, res) =>
 });
 
 module.exports = router;
+
+// @route   GET /api/admin/active-users
+// @desc    Get users active within the last 5 minutes (Owner only)
+// @access  Private/Owner
+router.get('/active-users', authMiddleware, async (req, res) => {
+  try {
+    // Only grafiqly.in@gmail.com can access this
+    if (req.user.email !== 'grafiqly.in@gmail.com') {
+      return res.status(403).json({ message: 'Access denied. Owner only feature.' });
+    }
+
+    // 5 minutes ago
+    const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000);
+
+    const activeUsers = await User.find({
+      lastActiveAt: { $gte: fiveMinutesAgo }
+    })
+    .select('name email role lastActiveAt avatar')
+    .sort({ lastActiveAt: -1 })
+    .lean();
+
+    res.json({ success: true, activeUsers });
+  } catch (err) {
+    console.error('Error fetching active users:', err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});

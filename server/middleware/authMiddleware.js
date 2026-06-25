@@ -30,6 +30,16 @@ const authMiddleware = async (req, res, next) => {
     }
 
     req.user = user;
+
+    // Track active user heartbeat (update max once per minute)
+    const now = Date.now();
+    if (!user.lastActiveAt || (now - new Date(user.lastActiveAt).getTime()) > 60000) {
+      // Fire and forget update (don't block the request)
+      User.updateOne({ _id: user._id }, { lastActiveAt: new Date(now) }).catch(err => 
+        console.error('Failed to update lastActiveAt', err)
+      );
+    }
+
     next();
   } catch (error) {
     if (error.name === 'TokenExpiredError') {
