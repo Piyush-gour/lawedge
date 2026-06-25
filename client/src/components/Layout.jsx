@@ -296,6 +296,17 @@ export default function Layout() {
             <span className="bottom-nav__label">{item.label}</span>
           </NavLink>
         ))}
+        {user?.role === 'admin' && (
+          <NavLink
+            to="/admin/dashboard"
+            className={({ isActive }) =>
+              `bottom-nav__item ${isActive ? 'bottom-nav__item--active' : ''}`
+            }
+          >
+            <span className="bottom-nav__icon">⚙️</span>
+            <span className="bottom-nav__label">Admin</span>
+          </NavLink>
+        )}
       </nav>
     </div>
   );
