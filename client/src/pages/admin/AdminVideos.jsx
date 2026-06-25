@@ -101,7 +101,8 @@ export default function AdminVideos() {
       setIsModalOpen(false);
       fetchData();
     } catch (err) {
-      alert('Failed to save video');
+      alert('Failed to save video: ' + (err.response?.data?.message || err.message));
+      console.error('Save video error:', err.response?.data || err.message);
     }
   };
 
