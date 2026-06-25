@@ -50,13 +50,13 @@ export default function AdminDashboard() {
   }, [isOwner]);
 
   return (
-    <div className="admin-overview" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-        <div className="admin-stat-card" style={{ flex: 1, minWidth: '200px' }}>
+    <>
+      <div className="admin-overview" style={{ marginBottom: '24px' }}>
+        <div className="admin-stat-card">
           <div className="admin-stat-card__title">Total Subjects</div>
           <div className="admin-stat-card__value">{stats?.subjects || 0}</div>
         </div>
-        <div className="admin-stat-card" style={{ flex: 1, minWidth: '200px' }}>
+        <div className="admin-stat-card">
           <div className="admin-stat-card__title">Total Videos</div>
           <div className="admin-stat-card__value">{stats?.videos || 0}</div>
         </div>
@@ -74,33 +74,34 @@ export default function AdminDashboard() {
           ) : activeUsers.length === 0 ? (
             <p style={{ color: '#64748b' }}>No users active in the last 5 minutes.</p>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
               {activeUsers.map(u => {
                 const minutesAgo = Math.floor((Date.now() - new Date(u.lastActiveAt).getTime()) / 60000);
                 return (
-                  <div key={u._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #f1f5f9' }}>
+                  <div key={u._id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', background: '#f8fafc', borderRadius: '12px', border: '1px solid #f1f5f9', boxShadow: '0 1px 3px rgba(0,0,0,0.05)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#475569' }}>
+                      <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#475569', flexShrink: 0 }}>
                         {u.avatar ? <img src={u.avatar} alt={u.name} style={{ width: '100%', height: '100%', borderRadius: '50%' }} /> : (u.name ? u.name[0].toUpperCase() : '?')}
                       </div>
-                      <div>
-                        <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{u.name || 'Unnamed User'}</div>
-                        <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{u.email}</div>
+                      <div style={{ overflow: 'hidden' }}>
+                        <div style={{ fontWeight: 'bold', color: '#1e293b', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{u.name || 'Unnamed User'}</div>
+                        <div style={{ fontSize: '0.8rem', color: '#64748b', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{u.email}</div>
                       </div>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', flexShrink: 0 }}>
                       <span style={{ 
-                        padding: '2px 8px', 
+                        padding: '4px 10px', 
                         borderRadius: '12px', 
-                        fontSize: '0.7rem', 
+                        fontSize: '0.65rem', 
                         fontWeight: 'bold',
+                        letterSpacing: '0.05em',
                         background: u.role === 'admin' ? '#fef08a' : '#e0e7ff',
                         color: u.role === 'admin' ? '#854d0e' : '#3730a3'
                       }}>
                         {u.role.toUpperCase()}
                       </span>
                       <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 'bold' }}>
-                        {minutesAgo === 0 ? 'Active just now' : `Active ${minutesAgo}m ago`}
+                        {minutesAgo === 0 ? 'Active just now' : `${minutesAgo}m ago`}
                       </span>
                     </div>
                   </div>
@@ -110,6 +111,6 @@ export default function AdminDashboard() {
           )}
         </div>
       )}
-    </div>
+    </>
   );
 }
