@@ -227,15 +227,22 @@ export default function AdminTests() {
       return;
     }
     try {
+      // Convert empty subject string to null (Mongoose can't cast "" to ObjectId)
+      const payload = {
+        ...formData,
+        subject: formData.subject || null,
+      };
+
       if (editingId) {
-        await api.put(`/tests/${editingId}`, formData);
+        await api.put(`/tests/${editingId}`, payload);
       } else {
-        await api.post('/tests', formData);
+        await api.post('/tests', payload);
       }
       setIsModalOpen(false);
       fetchData();
     } catch (err) {
-      alert('Failed to save test');
+      console.error('Save test error:', err.response?.data || err);
+      alert('Failed to save test: ' + (err.response?.data?.message || err.message));
     }
   };
 

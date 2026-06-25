@@ -89,8 +89,14 @@ export default function AdminVideos() {
 
     const payload = {
       ...formData,
+      subject: formData.subject || (subjects.length > 0 ? subjects[0]._id : ''),
       youtubeId,
     };
+
+    if (!payload.subject) {
+      alert('Please create a subject first before adding a video.');
+      return;
+    }
 
     try {
       if (editingId) {

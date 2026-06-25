@@ -51,7 +51,7 @@
 /* --- Test Card Grid --- */
 .tests-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-lg);
 }
 
@@ -473,8 +473,117 @@
   line-height: 1.5;
 }
 
+@media (max-width: 768px) {
+  .tests-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .test-results-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .test-topbar {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .test-topbar__title {
+    font-size: 0.85rem;
+  }
+
+  .test-topbar__timer {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 640px) {
-  .tests-grid { grid-template-columns: 1fr; }
-  .test-results-summary { grid-template-columns: 1fr; }
-  .test-topbar { flex-wrap: wrap; }
+  .tests-tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .tests-tab-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-width: 0;
+    flex: 1;
+    text-align: center;
+  }
+
+  .test-card__top {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .test-card__badge {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
+  .test-card__title {
+    font-size: 0.95rem;
+  }
+
+  .test-card__meta {
+    gap: var(--space-sm);
+  }
+
+  .test-card__meta-item {
+    font-size: 0.78rem;
+  }
+
+  .test-take-page {
+    padding: 0 4px;
+  }
+
+  .test-question-card {
+    padding: var(--space-md);
+  }
+
+  .test-question-card__text {
+    font-size: 0.95rem;
+  }
+
+  .test-option {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .test-question-card__nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .test-results-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .test-results-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .results-stat {
+    padding: var(--space-md);
+  }
+
+  .results-stat__value {
+    font-size: 1.5rem;
+  }
+
+  .review-card {
+    padding: var(--space-md);
+  }
+
+  .review-card__question {
+    font-size: 0.9rem;
+  }
+
+  .review-option {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+  }
 }

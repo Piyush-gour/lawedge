@@ -2,10 +2,10 @@
    LAYOUT — Sidebar + Header + Content Area
    ============================================ */
 
-/* --- Main Layout Grid --- */
 .app-layout {
   display: flex;
   min-height: 100vh;
+  min-width: 0;
   background: var(--color-bg-page);
 }
 
@@ -261,6 +261,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* --- Top Header --- */
@@ -316,6 +318,9 @@
 .app-page {
   flex: 1;
   padding: var(--space-xl);
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* --- Mobile Overlay --- */
@@ -370,15 +375,23 @@
 
 @media (max-width: 640px) {
   .app-page {
-    padding: var(--space-md);
+    padding: 8px;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .app-header {
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
   }
 
   .app-header__page-title {
     font-size: 1rem;
+  }
+
+  .app-content {
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 

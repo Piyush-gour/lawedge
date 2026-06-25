@@ -145,8 +145,11 @@
 
 .dashboard-container {
   max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   padding: 24px;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .dashboard-header {
@@ -160,6 +163,8 @@
   background: linear-gradient(90deg, #1e293b, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .dashboard-subtitle {
@@ -179,6 +184,9 @@
     "news news";
   gap: 24px;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -196,8 +204,8 @@
 
 .grid-timer { grid-area: timer; }
 .grid-heatmap { grid-area: heatmap; }
-.grid-left { grid-area: left; display: flex; flexDirection: column; gap: 24px; }
-.grid-right { grid-area: right; display: flex; flexDirection: column; gap: 24px; }
+.grid-left { grid-area: left; display: flex; flex-direction: column; gap: 24px; }
+.grid-right { grid-area: right; display: flex; flex-direction: column; gap: 24px; }
 .grid-stats { grid-area: stats; }
 .grid-news { grid-area: news; }
 
@@ -434,19 +442,64 @@
 }
 
 @media (max-width: 640px) {
+  .dashboard-container {
+    padding: 0;
+  }
+
+  .dashboard-title {
+    font-size: 1.4rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .dashboard-header {
+    margin-bottom: 12px;
+  }
+
+  .dashboard-grid {
+    gap: 12px;
+  }
+
   .dash-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .dash-stat-card {
+    padding: 12px;
+  }
+
+  .dash-stat-card__value {
+    font-size: 1.2rem;
   }
 
   .dash-welcome {
-    padding: var(--space-lg);
+    padding: var(--space-md);
   }
 
   .dash-welcome__greeting {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .dash-actions {
     grid-template-columns: 1fr;
+  }
+
+  .dash-action-btn {
+    font-size: 0.8rem;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .grid-timer,
+  .grid-heatmap,
+  .grid-left,
+  .grid-right,
+  .grid-stats,
+  .grid-news {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 }

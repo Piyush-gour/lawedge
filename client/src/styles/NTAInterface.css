@@ -375,3 +375,195 @@
 
 /* --- RESULTS SCREEN OVERRIDE --- */
 /* (We will still use the old styles for the results view, so we wrap the actual test taking in .nta-layout) */
+
+/* ─── NTA Mobile Responsive ─── */
+@media (max-width: 768px) {
+  .nta-header {
+    height: auto;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nta-header__title {
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .nta-timer {
+    font-size: 0.95rem;
+    padding: 4px 10px;
+  }
+
+  .nta-content {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .nta-main-panel {
+    margin: 8px;
+    flex: none;
+    min-height: 0;
+  }
+
+  .nta-question-header {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nta-question-body {
+    padding: 16px;
+  }
+
+  .nta-question-text {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  .nta-options-list {
+    gap: 10px;
+  }
+
+  .nta-option-text {
+    font-size: 0.9rem;
+  }
+
+  .nta-action-footer {
+    padding: 12px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nta-action-footer > div {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nta-action-footer .nta-btn {
+    flex: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+
+  .nta-action-footer > .nta-btn-save {
+    width: 100%;
+  }
+
+  .nta-sidebar {
+    width: 100%;
+    margin: 0 8px 8px;
+    flex: none;
+    max-height: none;
+  }
+
+  .nta-profile {
+    padding: 10px 14px;
+  }
+
+  .nta-profile-img {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .nta-profile-info {
+    font-size: 0.8rem;
+  }
+
+  .nta-legend {
+    padding: 10px 14px;
+  }
+
+  .nta-legend-grid {
+    gap: 8px;
+  }
+
+  .nta-legend-item {
+    font-size: 0.7rem;
+  }
+
+  .status-badge {
+    width: 26px;
+    height: 24px;
+    font-size: 0.72rem;
+  }
+
+  .nta-palette-container {
+    padding: 10px 14px;
+  }
+
+  .nta-palette-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+  }
+
+  .nta-palette-btn .status-badge {
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .nta-submit-section {
+    padding: 10px 14px;
+  }
+
+  .nta-btn-submit {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  /* Instructions screen */
+  .nta-instructions-header {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  .nta-instructions-content {
+    padding: 20px 16px;
+  }
+
+  .nta-instructions-content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .nta-instructions-content p,
+  .nta-instructions-content li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .nta-instructions-footer {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .nta-instructions-footer label {
+    font-size: 0.85rem !important;
+    line-height: 1.4;
+  }
+
+  .nta-legend-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .nta-palette-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .nta-action-footer .nta-btn {
+    font-size: 0.72rem;
+    padding: 6px 6px;
+  }
+}

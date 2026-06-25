@@ -63,7 +63,7 @@ export default function Pomodoro() {
         </button>
       </div>
 
-      <div style={{ fontSize: '4.5rem', fontWeight: 800, color: isWork ? '#3b82f6' : '#10b981', fontVariantNumeric: 'tabular-nums', letterSpacing: '-2px', marginBottom: '24px' }}>
+      <div style={{ fontSize: '3.5rem', fontWeight: 800, color: isWork ? '#3b82f6' : '#10b981', fontVariantNumeric: 'tabular-nums', letterSpacing: '-2px', marginBottom: '24px' }}>
         {formatTime(timeLeft)}
       </div>
 

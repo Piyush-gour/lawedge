@@ -79,7 +79,7 @@ export default function BadgesDisplay() {
 
       {/* Show all badges (locked + unlocked) when expanded */}
       {isExpanded && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginTop: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '12px', marginTop: '20px' }}>
           {badges.map(badge => (
             <div 
               key={badge.id} 

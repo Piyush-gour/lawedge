@@ -31,46 +31,95 @@ export default function CountdownTimer() {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const TimeUnit = ({ value, label }) => (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      background: 'linear-gradient(145deg, #1e293b, #0f172a)',
-      padding: '16px 20px',
-      borderRadius: '12px',
-      minWidth: '80px',
-      boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
-    }}>
-      <span style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#38bdf8', fontFamily: 'monospace', lineHeight: '1' }}>
-        {value.toString().padStart(2, '0')}
-      </span>
-      <span style={{ fontSize: '0.8rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '1px', marginTop: '8px' }}>
-        {label}
-      </span>
-    </div>
-  );
-
   return (
-    <div style={{
-      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-      padding: '32px',
-      borderRadius: '16px',
-      marginBottom: '24px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      border: '1px solid #334155'
-    }}>
-      <h3 style={{ margin: '0 0 24px 0', fontSize: '1.4rem', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '10px' }}>
+    <div className="countdown-wrapper">
+      <style>{`
+        .countdown-wrapper {
+          background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+          padding: 20px;
+          border-radius: 16px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 1px solid #334155;
+          width: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
+        }
+        .countdown-title {
+          margin: 0 0 16px 0;
+          font-size: 1.1rem;
+          color: #f8fafc;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          text-align: center;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .countdown-units {
+          display: flex;
+          gap: 8px;
+          justify-content: center;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .countdown-unit {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: linear-gradient(145deg, #1e293b, #0f172a);
+          padding: 10px 8px;
+          border-radius: 10px;
+          flex: 1;
+          min-width: 0;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .countdown-unit__value {
+          font-size: 1.6rem;
+          font-weight: bold;
+          color: #38bdf8;
+          font-family: monospace;
+          line-height: 1;
+        }
+        .countdown-unit__label {
+          font-size: 0.6rem;
+          color: #94a3b8;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-top: 4px;
+        }
+        @media (min-width: 480px) {
+          .countdown-wrapper { padding: 24px; }
+          .countdown-title { font-size: 1.25rem; }
+          .countdown-units { gap: 12px; }
+          .countdown-unit { padding: 14px 12px; }
+          .countdown-unit__value { font-size: 2rem; }
+          .countdown-unit__label { font-size: 0.7rem; }
+        }
+      `}</style>
+
+      <h3 className="countdown-title">
         <span>⏳</span> Countdown to CLAT PG 2027
       </h3>
       
-      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <TimeUnit value={timeLeft.days} label="Days" />
-        <TimeUnit value={timeLeft.hours} label="Hours" />
-        <TimeUnit value={timeLeft.minutes} label="Minutes" />
-        <TimeUnit value={timeLeft.seconds} label="Seconds" />
+      <div className="countdown-units">
+        <div className="countdown-unit">
+          <span className="countdown-unit__value">{timeLeft.days.toString().padStart(2, '0')}</span>
+          <span className="countdown-unit__label">Days</span>
+        </div>
+        <div className="countdown-unit">
+          <span className="countdown-unit__value">{timeLeft.hours.toString().padStart(2, '0')}</span>
+          <span className="countdown-unit__label">Hours</span>
+        </div>
+        <div className="countdown-unit">
+          <span className="countdown-unit__value">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+          <span className="countdown-unit__label">Min</span>
+        </div>
+        <div className="countdown-unit">
+          <span className="countdown-unit__value">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+          <span className="countdown-unit__label">Sec</span>
+        </div>
       </div>
     </div>
   );

@@ -30,8 +30,8 @@ export default function StudyHeatmap() {
   };
 
   return (
-    <div className="heatmap-wrapper" style={{ overflowX: 'auto' }}>
-      <h3 style={{ margin: '0 0 20px 0', fontSize: '1.2rem', color: '#1e293b' }}>🟩 CLAT PG Daily Consistency Tracker</h3>
+    <div className="heatmap-wrapper" style={{ overflowX: 'auto', maxWidth: '100%', width: '100%' }}>
+      <h3 style={{ margin: '0 0 16px 0', fontSize: '1rem', color: '#1e293b', wordBreak: 'break-word' }}>🟩 Study Consistency Tracker</h3>
       
       <style>{`
         /* Hide scrollbar for Chrome, Safari and Opera */
@@ -45,7 +45,7 @@ export default function StudyHeatmap() {
         }
       `}</style>
 
-      <div className="heatmap-container" style={{ display: 'flex', justifyContent: 'flex-start' }}>
+      <div className="heatmap-container" style={{ display: 'flex', justifyContent: 'flex-start', maxWidth: '100%' }}>
         {!loading && (
           <ActivityCalendar 
             data={data} 
@@ -59,10 +59,10 @@ export default function StudyHeatmap() {
               weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
               totalCount: '{{count}} study sessions completed in 2026'
             }}
-            blockSize={18}
+            blockSize={14}
             blockRadius={3}
-            blockMargin={4}
-            fontSize={14}
+            blockMargin={3}
+            fontSize={12}
             hideTotalCount={false}
           />
         )}

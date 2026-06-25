@@ -94,7 +94,7 @@ export default function DashboardPage() {
           {/* Quick Actions */}
           <div className="premium-card">
             <h3 style={{ margin: '0 0 16px 0', fontSize: '1.2rem' }}>⚡ Quick Actions</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+            <div className="dash-actions" style={{ marginTop: 0 }}>
               <Link to="/classes" className="dash-action-btn">▶️ Watch Classes</Link>
               <Link to="/pyq" className="dash-action-btn">📝 Solve PYQs</Link>
               <Link to="/tests" className="dash-action-btn">📋 Take a Test</Link>
@@ -116,15 +116,15 @@ export default function DashboardPage() {
           <div className="dash-stats" id="dash-stats">
             <div className="dash-stat-card">
               <h4>Total Tests</h4>
-              <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#3b82f6', margin: '8px 0 0 0' }}>{stats.tests?.total || 0}</p>
+              <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#3b82f6', margin: '8px 0 0 0' }}>{stats.tests?.total || 0}</p>
             </div>
             <div className="dash-stat-card">
               <h4>Avg. Score</h4>
-              <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#10b981', margin: '8px 0 0 0' }}>{stats.tests?.avgScore || 0}%</p>
+              <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#10b981', margin: '8px 0 0 0' }}>{stats.tests?.avgScore || 0}%</p>
             </div>
             <div className="dash-stat-card">
               <h4>Videos Watched</h4>
-              <p style={{ fontSize: '2rem', fontWeight: 'bold', color: '#8b5cf6', margin: '8px 0 0 0' }}>{stats.videos?.watched || 0}</p>
+              <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#8b5cf6', margin: '8px 0 0 0' }}>{stats.videos?.watched || 0}</p>
             </div>
           </div>
         </div>
